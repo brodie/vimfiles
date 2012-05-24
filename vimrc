@@ -207,7 +207,7 @@ if has("gui_macvim")
     "set transparency=15 " Transparency's broken in 7.3e!
     map <silent> <Leader>t <Esc>:silent !open -a Terminal<Return>
 
-    set columns=80 lines=40 " Set default window size
+    set columns=80 lines=44 " Set default window size
     if str2nr(split(system('osascript -e ''tell application "Finder" to get bounds of window of desktop'''), '\W\+')[3]) > 900
         set lines=60
     endif
