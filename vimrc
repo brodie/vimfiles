@@ -39,6 +39,7 @@ set shiftwidth=4
 set smarttab
 set softtabstop=4
 set textwidth=78
+let g:detectindent_preferred_expandtab=1
 
 " Search
 set hlsearch
@@ -72,15 +73,12 @@ set undoreload=10000
 " Syntax highlighting settings
 if has("syntax")
     syntax enable " Automatic syntax highlighting
-    " Highlight VCS conflict markers
-    match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 endif
 
 " Auto-commands
 if has("autocmd")
     " Tabbing settings
-    autocmd FileType ant,dtml,genshi,html,htmlcheetah,htmldjango,kid,mako,
-                    \php,sgml,smarty,xhtml,xml,xslt
+    autocmd FileType html,htmldjango,xhtml,xml
                    \ setlocal autoindent expandtab smarttab shiftwidth=2
                             \ softtabstop=2
     autocmd FileType python highlight PyFlakes gui=bold guibg=#aa2222
@@ -106,14 +104,7 @@ if has("autocmd")
     augroup END
 endif
 
-" Undo python-mode brain damage
-let g:pymode_lint_checker = "pyflakes,mccabe"
-let g:pymode_lint_onfly = 1
-let g:pymode_lint_cwindow = 0
-let g:pymode_utils_whitespaces = 0
-let g:pymode_folding = 0
-let g:pymode_options_other = 0
-
+" Leader bindings
 let mapleader = ","
 let maplocalleader = "\\"
 nnoremap ; :
@@ -145,6 +136,13 @@ let my_ctrlp_git_command = "" .
 
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
+function! SmartSplit()
+    vsplit
+    if winwidth(0) <= &columns
+        set columns+=80
+    endif
+endfunction
+
 " Window/buffer management
 nnoremap <silent> <Leader>c <Esc>:bd<CR>
 nnoremap <silent> <Leader>q <Esc>:q<CR>
@@ -154,7 +152,11 @@ nnoremap <silent> <Leader>2 <Esc>:set columns=160<CR>
 nnoremap <silent> <Leader>3 <Esc>:set columns=240<CR>
 nnoremap <Leader>w <C-w>w
 nnoremap <Leader>s <C-w>s
-nnoremap <Leader>v <C-w>v
+if has("gui")
+    nnoremap <silent> <Leader>v <Esc>:call SmartSplit()<CR>
+else
+    nnoremap <Leader>v <C-w>v
+endif
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -167,12 +169,6 @@ nnoremap <silent> <Leader><Space> <Esc>:noh<CR>
 nnoremap <Leader>u <Esc>:GundoToggle<CR>
 nnoremap <Leader>a <Esc>:Ack!<Space>
 nnoremap <Leader>n <Esc>:setlocal number!<CR>
-
-" More forgiving line movement
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
 
 " Select (charwise) the contents of the current line, excluding indentation.
 nnoremap vv ^vg_
@@ -288,13 +284,16 @@ if has("autocmd") && (has("gui") || &t_Co == 256)
     augroup END
 endif
 
-" MacVim settings
-if has("gui_macvim")
-    set guifont=Menlo:h12
-    set linespace=2
+" GUI settings
+if has("gui")
     set guioptions-=T " Disable toolbar
     set guioptions-=r " Disable scrollbar
     set guioptions-=L " Disable left-hand scrollbar
-    map <silent> <Leader>t <Esc>:silent !open -a Terminal<CR>
     set columns=80 lines=50 " Set default window size
+endif
+
+if has("gui_macvim")
+    set guifont=Menlo:h12
+    set linespace=2
+    map <silent> <Leader>t <Esc>:silent !open -a Terminal<CR>
 endif

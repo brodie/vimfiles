@@ -1,0 +1,7 @@
+*.rej
+*~
+*.py[cdo]
+*.swp
+.DS_Store
+.netrwhist
+tmp/
