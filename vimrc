@@ -1,7 +1,7 @@
 " Pathogen
 let g:pathogen_disabled = ['pathogen']
 call pathogen#infect()
-call pathogen#helptags()
+filetype plugin indent on
 
 " General settings
 set autoread
@@ -33,7 +33,11 @@ endif
 set autoindent
 set backspace=indent,eol,start " Smarter backspacing
 set expandtab
-set formatoptions=qrn1
+set formatoptions-=o
+set formatoptions+=n1j
+if has("autocmd")
+    autocmd FileType * setlocal formatoptions-=o
+endif
 set shiftround " Indent to multiples of shiftwidth
 set shiftwidth=4
 set smarttab
@@ -54,11 +58,6 @@ set wildmode=list:longest
 set wildignore=*.orig,*~,*.o,*.so,*.py[cdo],*.swp,*.prof,.DS_Store,
               \*/.git/*,*/.hg/*,*/.svn/*,.hgsubstate
 let g:netrw_list_hide='\.orig$,\.~$,\.s?o$,\.py[cdo]$,\.swp$,\.prof$'
-
-" Enable automatic filetype and ft plugins
-filetype on
-filetype plugin on
-filetype indent on
 
 " Backups
 set undodir=~/.vim/tmp/undo//
