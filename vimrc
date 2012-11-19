@@ -43,7 +43,6 @@ set shiftwidth=4
 set smarttab
 set softtabstop=4
 set textwidth=78
-let g:detectindent_preferred_expandtab=1
 
 " Search
 set hlsearch
