@@ -43,6 +43,10 @@ set shiftwidth=4
 set smarttab
 set softtabstop=4
 set textwidth=78
+if has("autocmd")
+    autocmd FileType css,html,htmldjango,xhtml,xml
+                   \ setlocal shiftwidth=2 softtabstop=2
+endif
 
 " Search
 set hlsearch
@@ -72,33 +76,8 @@ set undoreload=10000
 if has("syntax")
     syntax enable " Automatic syntax highlighting
 endif
-
-" Auto-commands
 if has("autocmd")
-    " Tabbing settings
-    autocmd FileType css,html,htmldjango,xhtml,xml
-                   \ setlocal shiftwidth=2 softtabstop=2
     autocmd FileType python highlight PyFlakes gui=bold guibg=#aa2222
-    " Resize splits when the window is resized
-    autocmd VimResized * :wincmd =
-
-    " Set the cursor line in the active window
-    if has("gui")
-        augroup cline
-            autocmd!
-            autocmd WinLeave,InsertEnter * set nocursorline
-            autocmd WinEnter,InsertLeave * set cursorline
-        augroup END
-    endif
-
-    " Restore the line the cursor was on when reloading a file
-    augroup line_return
-        autocmd!
-        autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \     execute 'normal! g`"zvzz' |
-            \ endif
-    augroup END
 endif
 
 " Leader bindings
@@ -133,6 +112,7 @@ let my_ctrlp_git_command = "" .
 
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
+" Window/buffer management
 function! SmartSplit()
     vsplit
     if winwidth(0) <= &columns
@@ -140,7 +120,6 @@ function! SmartSplit()
     endif
 endfunction
 
-" Window/buffer management
 nnoremap <silent> <Leader>c <Esc>:bd<CR>
 nnoremap <silent> <Leader>q <Esc>:q<CR>
 nnoremap <silent> <Leader>Q <Esc>:qa<CR>
@@ -158,6 +137,29 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+if has("autocmd")
+    " Resize splits when the window is resized
+    autocmd VimResized * :wincmd =
+
+    " Set the cursor line in the active window
+    if has("gui")
+        augroup cline
+            autocmd!
+            autocmd WinLeave,InsertEnter * set nocursorline
+            autocmd WinEnter,InsertLeave * set cursorline
+        augroup END
+    endif
+
+    " Restore the line the cursor was on when reloading a file
+    augroup line_return
+        autocmd!
+        autocmd BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \     execute 'normal! g`"zvzz' |
+            \ endif
+    augroup END
+endif
 
 " Clear search highlighting
 nnoremap <silent> <Leader><Space> <Esc>:noh<CR>
