@@ -76,9 +76,8 @@ endif
 " Auto-commands
 if has("autocmd")
     " Tabbing settings
-    autocmd FileType html,htmldjango,xhtml,xml
-                   \ setlocal autoindent expandtab smarttab shiftwidth=2
-                            \ softtabstop=2
+    autocmd FileType css,html,htmldjango,xhtml,xml
+                   \ setlocal shiftwidth=2 softtabstop=2
     autocmd FileType python highlight PyFlakes gui=bold guibg=#aa2222
     " Resize splits when the window is resized
     autocmd VimResized * :wincmd =
