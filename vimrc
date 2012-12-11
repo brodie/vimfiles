@@ -46,7 +46,10 @@ set textwidth=78
 if has("autocmd")
     autocmd FileType css,html,htmldjango,xhtml,xml
                    \ setlocal shiftwidth=2 softtabstop=2
+    autocmd FileType go,make setlocal noexpandtab shiftwidth=8 softtabstop=0
+    autocmd FileType go,make let b:yaifa_disabled=1
 endif
+let g:yaifa_tab_tab_width=8
 
 " Search
 set hlsearch

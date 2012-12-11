@@ -30,4 +30,7 @@
 	url = https://github.com/vim-scripts/ShowTrailingWhitespace.git
 [submodule "bundle/yaifa"]
 	path = bundle/yaifa
-	url = https://github.com/Raimondi/YAIFA
+	url = https://github.com/brodie/YAIFA
+[submodule "bundle/go"]
+	path = bundle/go
+	url = https://github.com/jnwhiteh/vim-golang
