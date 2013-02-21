@@ -14,9 +14,9 @@ if has("mouse")
     set mouse=a " Enable the mouse
 endif
 set ruler " Show cursor information
-set scrolloff=3
+set scrolloff=1
 set sidescroll=1
-set sidescrolloff=10
+set sidescrolloff=5
 if has("showcmd")
     set showcmd
 endif
@@ -45,7 +45,7 @@ set softtabstop=4
 set textwidth=78
 if has("autocmd")
     autocmd FileType css,html,htmldjango,xhtml,xml
-                   \ setlocal shiftwidth=2 softtabstop=2
+                   \ setlocal formatoptions-=t shiftwidth=2 softtabstop=2
     autocmd FileType go,make setlocal noexpandtab shiftwidth=8 softtabstop=0
     autocmd FileType go,make let b:yaifa_disabled=1
 endif
@@ -81,12 +81,12 @@ if has("syntax")
 endif
 if has("autocmd")
     autocmd FileType python highlight PyFlakes gui=bold guibg=#aa2222
+    autocmd BufNewFile,BufRead *.t set filetype=cram
 endif
 
 " Leader bindings
 let mapleader = ","
 let maplocalleader = "\\"
-nnoremap ; :
 
 " Ctrl-P bindings
 let g:ctrlp_map = '<Leader>f'
@@ -172,35 +172,11 @@ nnoremap <Leader>u <Esc>:GundoToggle<CR>
 nnoremap <Leader>a <Esc>:Ack!<Space>
 nnoremap <Leader>n <Esc>:setlocal number!<CR>
 
-" Select (charwise) the contents of the current line, excluding indentation.
-nnoremap vv ^vg_
-
-" Keep the cursor in place while joining lines
-nnoremap J mzJ`z
-
-" Split line (sister to [J]oin lines)
-" The normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<CR><Esc>^mwgk:silent! s/\v +$//<CR>:noh<CR>`w
-
-" Reformat line.
-nnoremap ql ^vg_gq
-
-" Formatting, TextMate-style
-nnoremap Q gqip
-vnoremap Q gq
-
-" HTML tag closing
-inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<CR>a
-
 " System clipboard interaction.
 nnoremap <Leader>y "*y
 nnoremap <Leader>p <Esc>:set paste<CR>"*p<CR>:set nopaste<CR>
 nnoremap <Leader>P <Esc>:set paste<CR>"*P<CR>:set nopaste<CR>
 vnoremap <Leader>y "*ygv
-
-" Select entire buffer
-nnoremap vaa ggvGg_
-nnoremap Vaa ggVG
 
 " Emacs bindings in command line mode
 cnoremap <C-a> <Home>
@@ -209,13 +185,6 @@ cnoremap <C-e> <End>
 " Insert mode completion
 inoremap <C-f> <C-x><C-f>
 inoremap <C-]> <C-x><C-]>
-
-" gi already moves to "last place you exited insert mode", so we'll map gI to
-" something similar: move to last change
-nnoremap gI `.
-
-" Ack for the last search.
-nnoremap <silent> <Leader>/ <Esc>:execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
 
 " Heresy
 inoremap <C-a> <Esc>I
@@ -230,7 +199,7 @@ if has("gui")
     colorscheme molokai
 endif
 
-" Enable spell checking (vim7 only)
+" Enable spell checking
 if has("spell")
     set spelllang=en_us " Global spell checking
     set spellfile=~/.vim/custom-dictionary.utf-8.add
@@ -262,9 +231,6 @@ if &t_Co == 256
     highlight ColorColumn ctermbg=232
 endif
 
-let g:vimroom_guibackground='#1B1E1F'
-let g:vimroom_width=79
-
 " Highlight the 80th column
 if has("autocmd") && (has("gui") || &t_Co == 256)
     function! SmartColorColumn()
@@ -288,14 +254,11 @@ endif
 
 " GUI settings
 if has("gui")
-    set guioptions-=T " Disable toolbar
-    set guioptions-=r " Disable scrollbar
-    set guioptions-=L " Disable left-hand scrollbar
+    set guioptions-=TrL " Disable toolbar and scrollbars
     set columns=80 lines=50 " Set default window size
 endif
 
 if has("gui_macvim")
     set guifont=Menlo:h12
     set linespace=2
-    map <silent> <Leader>t <Esc>:silent !open -a Terminal<CR>
 endif
