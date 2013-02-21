@@ -254,7 +254,9 @@ endif
 
 " GUI settings
 if has("gui")
-    set guioptions-=TrL " Disable toolbar and scrollbars
+    set guioptions-=T " Disable toolbar
+    set guioptions-=r " Disable scrollbar
+    set guioptions-=L " Disable left-hand scrollbar
     set columns=80 lines=50 " Set default window size
 endif
 
