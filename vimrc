@@ -6,7 +6,6 @@ filetype plugin indent on
 " General settings
 set autoread
 set autowrite
-set cursorline
 set hidden
 set history=1000 " Keep command line history
 set laststatus=2
@@ -29,7 +28,6 @@ set viminfo=\"50,'20 " Store session info in ~/.viminfo
 if has("virtualedit")
     set virtualedit+=block
 endif
-set lazyredraw
 
 " Indentation/formatting
 set autoindent
@@ -52,6 +50,7 @@ if has("autocmd")
     autocmd FileType go,make let b:yaifa_disabled=1
 endif
 let g:yaifa_tab_tab_width=8
+let g:yaifa_max_lines=128
 
 " Search
 set hlsearch
@@ -147,19 +146,12 @@ if has("autocmd")
     " Resize splits when the window is resized
     autocmd VimResized * :wincmd =
 
-    " Set the cursor line in the active window
-    augroup cline
-        autocmd!
-        autocmd WinLeave,InsertEnter * set nocursorline
-        autocmd WinEnter,InsertLeave * set cursorline
-    augroup END
-
     " Restore the line the cursor was on when reloading a file
-    augroup line_return
+    augroup RestoreCursor
         autocmd!
-        autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \     execute 'normal! g`"zvzz' |
+        autocmd BufWinEnter *
+            \ if line("'\"") <= line("$") |
+            \     execute 'normal! g`"' |
             \ endif
     augroup END
 endif
@@ -219,15 +211,6 @@ endif
 " TextMate-style display of invisible characters
 set listchars=tab:⇥\ ,eol:¬,trail:·,extends:❯,precedes:❮
 set list
-highlight clear NonText
-highlight NonText ctermfg=DarkGrey guifg=#404040
-highlight clear SpecialKey
-highlight SpecialKey ctermfg=DarkGrey guifg=#505050
-if &t_Co == 256
-    highlight NonText ctermfg=232 guifg=#404040
-    highlight SpecialKey ctermfg=232 guifg=#505050 guibg=NONE
-    highlight ColorColumn ctermbg=232
-endif
 
 " Highlight the 80th column
 if has("autocmd") && (has("gui") || &t_Co == 256)
@@ -241,7 +224,7 @@ if has("autocmd") && (has("gui") || &t_Co == 256)
 
     " Only show colorcolumn in the current window.
     call SmartColorColumn()
-    augroup ccol
+    augroup SmartColorColumn
         autocmd!
         autocmd WinLeave * setlocal colorcolumn=0
         autocmd WinEnter * call SmartColorColumn()
