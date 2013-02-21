@@ -31,3 +31,6 @@
 [submodule "bundle/go"]
 	path = bundle/go
 	url = https://github.com/jnwhiteh/vim-golang
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = https://github.com/brodie/molokai

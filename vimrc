@@ -6,6 +6,7 @@ filetype plugin indent on
 " General settings
 set autoread
 set autowrite
+set cursorline
 set hidden
 set history=1000 " Keep command line history
 set laststatus=2
@@ -28,6 +29,7 @@ set viminfo=\"50,'20 " Store session info in ~/.viminfo
 if has("virtualedit")
     set virtualedit+=block
 endif
+set lazyredraw
 
 " Indentation/formatting
 set autoindent
@@ -146,13 +148,11 @@ if has("autocmd")
     autocmd VimResized * :wincmd =
 
     " Set the cursor line in the active window
-    if has("gui")
-        augroup cline
-            autocmd!
-            autocmd WinLeave,InsertEnter * set nocursorline
-            autocmd WinEnter,InsertLeave * set cursorline
-        augroup END
-    endif
+    augroup cline
+        autocmd!
+        autocmd WinLeave,InsertEnter * set nocursorline
+        autocmd WinEnter,InsertLeave * set cursorline
+    augroup END
 
     " Restore the line the cursor was on when reloading a file
     augroup line_return
@@ -195,9 +195,7 @@ cmap w!! w !sudo tee % > /dev/null
 
 " Set color scheme
 set background=dark
-if has("gui")
-    colorscheme molokai
-endif
+colorscheme molokai
 
 " Enable spell checking
 if has("spell")
