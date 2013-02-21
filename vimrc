@@ -202,7 +202,7 @@ endif
 " Enable spell checking
 if has("spell")
     set spelllang=en_us " Global spell checking
-    set spellfile=~/.vim/custom-dictionary.utf-8.add
+    set spellfile=~/.vim/spellfile.utf-8.add
     set spell
     highlight clear SpellBad
     highlight SpellBad term=standout ctermfg=Red term=underline
