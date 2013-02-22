@@ -33,7 +33,7 @@ endif
 set autoindent
 set backspace=indent,eol,start " Smarter backspacing
 set expandtab
-set formatoptions-=o
+set formatoptions-=ot
 set formatoptions+=n1j
 if has("autocmd")
     autocmd FileType * setlocal formatoptions-=o
@@ -48,6 +48,8 @@ if has("autocmd")
                    \ setlocal formatoptions-=t shiftwidth=2 softtabstop=2
     autocmd FileType go,make setlocal noexpandtab shiftwidth=8 softtabstop=0
     autocmd FileType go,make let b:yaifa_disabled=1
+    autocmd FileType gitcommit,hgcommit,markdown,rst,text
+                   \ setlocal formatoptions+=t
 endif
 let g:yaifa_tab_tab_width=8
 let g:yaifa_max_lines=128
