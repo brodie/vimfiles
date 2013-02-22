@@ -29,6 +29,10 @@ if has("virtualedit")
     set virtualedit+=block
 endif
 
+" Time out on escape earlier
+set ttimeout
+set ttimeoutlen=50
+
 " Indentation/formatting
 set autoindent
 set backspace=indent,eol,start " Smarter backspacing
@@ -174,15 +178,16 @@ vnoremap <Leader>y "*ygv
 
 " Emacs bindings in command line mode
 cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
+cnoremap <M-b> <S-Left>
+cnoremap <Esc>b <S-Left>
+cnoremap <M-f> <S-Right>
+cnoremap <Esc>f <S-Right>
+cnoremap <M-BS> <C-w>
+cnoremap <Esc><BS> <C-w>
 
 " Insert mode completion
 inoremap <C-f> <C-x><C-f>
 inoremap <C-]> <C-x><C-]>
-
-" Heresy
-inoremap <C-a> <Esc>I
-inoremap <C-e> <Esc>A
 
 " Sudo to write
 cmap w!! w !sudo tee % > /dev/null
