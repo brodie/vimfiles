@@ -27,10 +27,10 @@
 	url = https://github.com/vim-scripts/ShowTrailingWhitespace.git
 [submodule "bundle/yaifa"]
 	path = bundle/yaifa
-	url = https://github.com/brodie/YAIFA
+	url = https://github.com/brodie/YAIFA.git
 [submodule "bundle/go"]
 	path = bundle/go
-	url = https://github.com/jnwhiteh/vim-golang
+	url = https://github.com/jnwhiteh/vim-golang.git
 [submodule "bundle/molokai"]
 	path = bundle/molokai
-	url = https://github.com/brodie/molokai
+	url = https://github.com/brodie/molokai.git
