@@ -29,10 +29,6 @@ if has("virtualedit")
     set virtualedit+=block
 endif
 
-" Time out on escape earlier
-set ttimeout
-set ttimeoutlen=50
-
 " Indentation/formatting
 set autoindent
 set backspace=indent,eol,start " Smarter backspacing
