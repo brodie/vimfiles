@@ -129,20 +129,13 @@ endfunction
 nnoremap <silent> <Leader>c <Esc>:bd<CR>
 nnoremap <silent> <Leader>q <Esc>:q<CR>
 nnoremap <silent> <Leader>Q <Esc>:qa<CR>
+nnoremap <Leader>w <C-w>w
+nnoremap <Leader>s <C-w>s
 nnoremap <silent> <Leader>1 <C-w>o<Esc>:set columns=80<CR>
 nnoremap <silent> <Leader>2 <Esc>:set columns=160<CR>
 nnoremap <silent> <Leader>3 <Esc>:set columns=240<CR>
-nnoremap <Leader>w <C-w>w
-nnoremap <Leader>s <C-w>s
-if has("gui")
-    nnoremap <silent> <Leader>v <Esc>:call SmartSplit()<CR>
-else
-    nnoremap <Leader>v <C-w>v
-endif
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <silent> <Leader>v <Esc>:call SmartSplit()<CR>
+nnoremap <silent> <Leader>V <C-w>v
 
 if has("autocmd")
     " Resize splits when the window is resized
@@ -164,7 +157,6 @@ nnoremap <silent> <Leader><Space> <Esc>:noh<CR>
 " Miscellaneous
 nnoremap <Leader>u <Esc>:GundoToggle<CR>
 nnoremap <Leader>a <Esc>:Ack!<Space>
-nnoremap <Leader>n <Esc>:setlocal number!<CR>
 
 " System clipboard interaction.
 nnoremap <Leader>y "*y
