@@ -34,7 +34,11 @@ set autoindent
 set backspace=indent,eol,start " Smarter backspacing
 set expandtab
 set formatoptions-=ot
-set formatoptions+=n1j
+set formatoptions+=n1
+try
+    set formatoptions+=j
+catch /^Vim(set):E539/
+endtry
 if has("autocmd")
     autocmd FileType * setlocal formatoptions-=o
 endif
