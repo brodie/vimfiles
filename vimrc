@@ -144,7 +144,11 @@ nnoremap <Leader>s <C-w>s
 nnoremap <silent> <Leader>1 <C-w>o<Esc>:set columns=80<CR>
 nnoremap <silent> <Leader>2 <Esc>:set columns=160<CR>
 nnoremap <silent> <Leader>3 <Esc>:set columns=240<CR>
-nnoremap <silent> <Leader>v <Esc>:call SmartSplit()<CR>
+if has("gui")
+    nnoremap <silent> <Leader>v <Esc>:call SmartSplit()<CR>
+else
+    nnoremap <Leader>v <C-w>v
+endif
 nnoremap <silent> <Leader>V <C-w>v
 
 if has("autocmd")
