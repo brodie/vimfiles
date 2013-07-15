@@ -33,7 +33,8 @@ endif
 set autoindent
 set backspace=indent,eol,start " Smarter backspacing
 set expandtab
-set formatoptions-=ot
+set formatoptions-=o
+set formatoptions-=t
 set formatoptions+=n1
 try
     set formatoptions+=j
