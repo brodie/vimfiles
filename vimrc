@@ -43,7 +43,12 @@ endtry
 if has("autocmd")
     autocmd FileType * setlocal formatoptions-=o
 endif
-set shiftround " Indent to multiples of shiftwidth
+" FIXME: This option resets indentation inside blocks in visual mode.
+"        It'd be nice if it only rounded indentation for the entire block.
+"        (I.e., indent the first line based on shiftround, and indent every
+"        following line based on how much indentation was added to just the
+"        first line.)
+"set shiftround " Indent to multiples of shiftwidth
 set shiftwidth=4
 set smarttab
 set softtabstop=4
