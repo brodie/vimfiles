@@ -101,6 +101,10 @@ endif
 let mapleader = ","
 let maplocalleader = "\\"
 
+" YouCompleteMe bindings
+let g:ycm_key_detailed_diagnostics = ''
+nnoremap <silent> <Leader>g <Esc>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " Ctrl-P bindings
 let g:ctrlp_map = '<Leader>f'
 let g:ctrlp_jump_to_buffer = 0
