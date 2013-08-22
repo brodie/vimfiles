@@ -93,7 +93,9 @@ if has("syntax")
     syntax enable " Automatic syntax highlighting
 endif
 if has("autocmd")
-    autocmd FileType python highlight PyFlakes gui=bold guibg=#aa2222
+    autocmd Filetype python highlight link PyFlakes NONE
+    autocmd FileType python highlight PyFlakes term=reverse ctermbg=9
+                                             \ gui=bold guibg=#aa2222
     autocmd BufNewFile,BufRead *.t set filetype=cram
 endif
 
@@ -207,18 +209,6 @@ if has("spell")
     set spelllang=en_us " Global spell checking
     set spellfile=~/.vim/spellfile.utf-8.add
     set spell
-    highlight clear SpellBad
-    highlight SpellBad term=standout ctermfg=Red term=underline
-                     \ cterm=underline gui=underline guisp=#883300
-    highlight clear SpellCap
-    highlight SpellCap term=underline cterm=underline gui=underline
-                     \ guisp=#7070f0
-    highlight clear SpellLocal
-    highlight SpellLocal term=underline cterm=underline gui=underline
-                       \ guisp=#70f0f0
-    highlight clear SpellRare
-    highlight SpellRare term=underline cterm=underline gui=underline
-                      \ guisp=#ffffff
 endif
 
 " TextMate-style display of invisible characters
