@@ -105,7 +105,8 @@ let maplocalleader = "\\"
 
 " YouCompleteMe bindings
 let g:ycm_key_detailed_diagnostics = ''
-nnoremap <silent> <Leader>g <Esc>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <silent> <Leader>g
+                \ <Esc>:YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Ctrl-P bindings
 let g:ctrlp_map = '<Leader>f'
