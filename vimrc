@@ -109,30 +109,8 @@ nnoremap <silent> <Leader>g
 
 " Ctrl-P bindings
 let g:ctrlp_map = '<Leader>f'
-let g:ctrlp_jump_to_buffer = 0
-"let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window_reversed = 1
-let g:ctrlp_max_height = 20
-let g:ctrlp_extensions = ['tag']
+let g:ctrlp_switch_buffer = ''
 nnoremap <silent> <Leader>b <Esc>:CtrlPMRU<CR>
-
-let ctrlp_filter_greps = "".
-    \ "egrep -iv '\\.(" .
-    \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
-    \ ")$' | " .
-    \ "egrep -v '^(\\./)?(" .
-    \ ".git/|.hg/|.svn/" .
-    \ ")'"
-
-let my_ctrlp_user_command = "" .
-    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
-    \ ctrlp_filter_greps
-
-let my_ctrlp_git_command = "" .
-    \ "cd %s && git ls-files --exclude-standard -co | " .
-    \ ctrlp_filter_greps
-
-let g:ctrlp_user_command = ['.git/', my_ctrlp_git_command, my_ctrlp_user_command]
 
 " Window/buffer management
 function! SmartSplit()
