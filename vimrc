@@ -60,6 +60,7 @@ if has("autocmd")
     autocmd FileType go,make let b:yaifa_disabled=1
     autocmd FileType gitcommit,hgcommit,markdown,rst,text
                    \ setlocal formatoptions+=t
+    autocmd FileType gitcommit,hgcommit setlocal textwidth=72
 endif
 let g:yaifa_tab_tab_width=8
 let g:yaifa_max_lines=128
