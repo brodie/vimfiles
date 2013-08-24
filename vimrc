@@ -94,11 +94,9 @@ if has("syntax")
     syntax enable " Automatic syntax highlighting
 endif
 if has("autocmd")
-    autocmd Filetype python highlight link PyFlakes NONE
-    autocmd FileType python highlight PyFlakes term=reverse ctermbg=9
-                                             \ gui=bold guibg=#aa2222
     autocmd BufNewFile,BufRead *.t set filetype=cram
 endif
+let g:syntastic_python_checkers = ['python', 'pyflakes']
 
 " Leader bindings
 let mapleader = ","
