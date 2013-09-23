@@ -98,12 +98,6 @@ if has("autocmd")
 endif
 let g:syntastic_python_checkers = ['python', 'pyflakes']
 
-" YouCompleteMe settings
-let g:ycm_key_detailed_diagnostics = ''
-let g:ycm_autoclose_preview_window_after_insertion = 1
-nnoremap <silent> <Leader>g
-                \ <Esc>:YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 " Leader bindings
 let mapleader = ","
 let maplocalleader = "\\"
