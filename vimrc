@@ -187,7 +187,9 @@ colorscheme molokai
 if has("spell")
     set spelllang=en_us " Global spell checking
     set spellfile=~/.vim/spellfile.utf-8.add
-    set spell
+    if has("gui")
+        set spell
+    endif
 endif
 
 " TextMate-style display of invisible characters
