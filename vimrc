@@ -120,13 +120,14 @@ nnoremap <silent> <Leader>q <Esc>:q<CR>
 nnoremap <silent> <Leader>Q <Esc>:qa<CR>
 nnoremap <Leader>w <C-w>w
 nnoremap <Leader>s <C-w>s
-nnoremap <silent> <Leader>1 <C-w>o<Esc>:set columns=80<CR>
-nnoremap <silent> <Leader>2 <Esc>:set columns=160<CR>
-nnoremap <silent> <Leader>3 <Esc>:set columns=240<CR>
 if has("gui")
     nnoremap <silent> <Leader>v <Esc>:call SmartSplit()<CR>
+    nnoremap <silent> <Leader>1 <C-w>o<Esc>:set columns=80<CR>
+    nnoremap <silent> <Leader>2 <Esc>:set columns=160<CR>
+    nnoremap <silent> <Leader>3 <Esc>:set columns=240<CR>
 else
     nnoremap <Leader>v <C-w>v
+    nnoremap <silent> <Leader>1 <C-w>o
 endif
 nnoremap <silent> <Leader>V <C-w>v
 
