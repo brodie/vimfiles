@@ -156,12 +156,6 @@ nnoremap <silent> <Leader><Space> <Esc>:noh<CR>
 nnoremap <Leader>u <Esc>:GundoToggle<CR>
 nnoremap <Leader>a <Esc>:Ack!<Space>
 
-" System clipboard interaction.
-nnoremap <Leader>y "*y
-nnoremap <Leader>p <Esc>:set paste<CR>"*p<CR>:set nopaste<CR>
-nnoremap <Leader>P <Esc>:set paste<CR>"*P<CR>:set nopaste<CR>
-vnoremap <Leader>y "*ygv
-
 " Emacs bindings in command line mode
 cnoremap <C-a> <Home>
 cnoremap <M-b> <S-Left>
