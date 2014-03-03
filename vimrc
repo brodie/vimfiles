@@ -186,7 +186,9 @@ endif
 
 " TextMate-style display of invisible characters
 set listchars=tab:⇥\ ,eol:¬,trail:·,extends:❯,precedes:❮
-set list
+if has("gui")
+    set list
+endif
 
 " Highlight the 80th column
 if has("autocmd") && (has("gui") || &t_Co == 256)
