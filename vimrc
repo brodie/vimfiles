@@ -154,7 +154,6 @@ nnoremap <silent> <Leader><Space> <Esc>:noh<CR>
 
 " Miscellaneous
 nnoremap <Leader>u <Esc>:GundoToggle<CR>
-nnoremap <Leader>a <Esc>:Ack!<Space>
 
 " Emacs bindings in command line mode
 cnoremap <C-a> <Home>
