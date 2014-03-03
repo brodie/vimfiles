@@ -102,7 +102,11 @@ let g:syntastic_python_checkers = ['python', 'pyflakes']
 let mapleader = ","
 let maplocalleader = "\\"
 
-" Ctrl-P bindings
+" Ctrl-P settings
+if filereadable(expand('~/.vim/bundle/ctrlp-cmatcher/autoload/') .
+            \ 'fuzzycomt.so')
+    let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
+endif
 let g:ctrlp_map = '<Leader>f'
 let g:ctrlp_switch_buffer = ''
 nnoremap <silent> <Leader>b <Esc>:CtrlPMRU<CR>

@@ -52,3 +52,6 @@
 [submodule "bundle/repeat"]
 	path = bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "bundle/ctrlp-cmatcher"]
+	path = bundle/ctrlp-cmatcher
+	url = https://github.com/JazzCore/ctrlp-cmatcher.git
