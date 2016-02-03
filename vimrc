@@ -107,7 +107,16 @@ if filereadable(expand('~/.vim/bundle/ctrlp-cmatcher/autoload/') .
             \ 'fuzzycomt.so')
     let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 endif
+let g:ctrlp_user_command = {
+            \ 'types': {
+                \ 1: ['.git',
+                    \ 'git --git-dir=%s/.git ls-files -oc --exclude-standard'],
+                \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+            \ },
+            \ 'fallback': 'find %s -type f',
+            \ }
 let g:ctrlp_map = '<Leader>f'
+let g:ctrlp_max_files = 0
 let g:ctrlp_switch_buffer = ''
 nnoremap <silent> <Leader>b <Esc>:CtrlPMRU<CR>
 
