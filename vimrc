@@ -64,6 +64,7 @@ if has("autocmd")
 endif
 let g:yaifa_tab_tab_width=8
 let g:yaifa_max_lines=128
+let g:rustfmt_autosave = 1
 
 " Search
 set hlsearch
