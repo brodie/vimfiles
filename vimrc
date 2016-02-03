@@ -172,8 +172,8 @@ inoremap <C-]> <C-x><C-]>
 cmap w!! w !sudo tee % > /dev/null
 
 " Set color scheme
-set background=dark
-colorscheme molokai
+set background=light
+colorscheme github
 
 " Enable spell checking
 if has("spell")
