@@ -7,24 +7,29 @@ filetype plugin indent on
 set autoread
 set autowrite
 set hidden
-set history=1000 " Keep command line history
+set history=10000 " Keep command line history
+set langnoremap " (nvim default)
 set laststatus=2
+set nrformats-=octal " (nvim default)
 set modelines=0
 if has("mouse")
     set mouse=a " Enable the mouse
 endif
 set ruler " Show cursor information
 set scrolloff=1
+set sessionoptions-=options " (nvim default)
 set sidescroll=1
 set sidescrolloff=5
 if has("showcmd")
     set showcmd
 endif
 set showmatch " Show matching brackets
+set tabpagemax=50 " (nvim default)
+set tags=./tags;,tags " (nvim default)
 if has("title")
     set title " Set the terminal title
 endif
-set viminfo=\"50,'20 " Store session info in ~/.viminfo
+set viminfo='100,<50,s10,h " Store session info in ~/.viminfo
 if has("virtualedit")
     set virtualedit+=block
 endif
@@ -73,6 +78,7 @@ set ignorecase " Case-insensitive searching
 set smartcase " Case-sensitive searching for searches with uppercase letters
 
 " Completion
+set complete-=i " (nvim default)
 set completeopt=longest,menuone,preview
 set wildmenu
 set wildmode=list:longest
