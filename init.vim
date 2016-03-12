@@ -104,10 +104,6 @@ let mapleader = ","
 let maplocalleader = "\\"
 
 " Ctrl-P settings
-if filereadable(expand('~/.vim/bundle/ctrlp-cmatcher/autoload/') .
-            \ 'fuzzycomt.so')
-    let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
-endif
 let g:ctrlp_user_command = {
             \ 'types': {
                 \ 1: ['.git',

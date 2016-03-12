@@ -4,9 +4,6 @@
 [submodule "bundle/ragel"]
 	path = bundle/ragel
 	url = https://github.com/jayferd/ragel.vim.git
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = https://github.com/sjl/gundo.vim.git
 [submodule "bundle/indentpython"]
 	path = bundle/indentpython
 	url = https://github.com/brodie/indentpython.vim.git
@@ -49,9 +46,6 @@
 [submodule "bundle/repeat"]
 	path = bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "bundle/ctrlp-cmatcher"]
-	path = bundle/ctrlp-cmatcher
-	url = https://github.com/JazzCore/ctrlp-cmatcher.git
 [submodule "bundle/rust"]
 	path = bundle/rust
 	url = https://github.com/rust-lang/rust.vim.git
