@@ -8,7 +8,9 @@ set autoread
 set autowrite
 set hidden
 set history=10000 " Keep command line history
-set langnoremap " (nvim default)
+if has("langmap")
+    set langnoremap " (nvim default)
+endif
 set laststatus=2
 set nrformats-=octal " (nvim default)
 set modelines=0
