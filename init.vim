@@ -28,6 +28,8 @@ endif
 set showmatch " Show matching brackets
 set tabpagemax=50 " (nvim default)
 set tags=./tags;,tags " (nvim default)
+set ttimeout " (nvim default)
+set ttimeoutlen=50 " (nvim default)
 if has("title")
     set title " Set the terminal title
 endif
@@ -89,14 +91,13 @@ set wildignore=*.orig,*~,*.o,*.so,*.py[cdo],*.swp,*.prof,.DS_Store,
 let g:netrw_list_hide='\.orig$,\.~$,\.s?o$,\.py[cdo]$,\.swp$,\.prof$'
 
 " Backups
-set undodir=~/.vim/tmp/undo//
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap//
+set undodir=~/.local/share/nvim/undo
+set backupdir=~/.local/share/nvim/backup
+set directory=~/.local/share/nvim/swap//
 set backup
-set backupskip=/tmp/*,/private/tmp/*
+set backupskip+=/private/tmp/*
 set noswapfile
 set undofile
-set undoreload=10000
 
 " Syntax highlighting settings
 if has("syntax")
@@ -171,19 +172,20 @@ nnoremap <Leader>u <Esc>:GundoToggle<CR>
 
 " Emacs bindings in command line mode
 cnoremap <C-a> <Home>
-cnoremap <M-b> <S-Left>
-cnoremap <Esc>b <S-Left>
-cnoremap <M-f> <S-Right>
-cnoremap <Esc>f <S-Right>
-cnoremap <M-BS> <C-w>
-cnoremap <Esc><BS> <C-w>
+" The following bindings are disabled so <Esc> doesn't trigger timeout
+"cnoremap <M-b> <S-Left>
+"cnoremap <Esc>b <S-Left>
+"cnoremap <M-f> <S-Right>
+"cnoremap <Esc>f <S-Right>
+"cnoremap <M-BS> <C-w>
+"cnoremap <Esc><BS> <C-w>
 
 " Insert mode completion
 inoremap <C-f> <C-x><C-f>
 inoremap <C-]> <C-x><C-]>
 
-" Sudo to write
-cmap w!! w !sudo tee % > /dev/null
+" Sudo to write (currently disabled so typing w doesn't trigger timeout)
+"cmap w!! w !sudo tee % > /dev/null
 
 " Set color scheme
 set background=light
@@ -192,7 +194,7 @@ colorscheme github
 " Enable spell checking
 if has("spell")
     set spelllang=en_us " Global spell checking
-    set spellfile=~/.vim/spellfile.utf-8.add
+    set spellfile=~/.config/nvim/spellfile.utf-8.add
     if has("gui")
         set spell
     endif
