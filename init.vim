@@ -6,6 +6,9 @@ filetype plugin indent on
 " General settings
 set autoread
 set autowrite
+if has("clipboard")
+    set clipboard=unnamed " Use system clipboard
+endif
 set hidden
 set history=10000 " Keep command line history
 if has("langmap")
